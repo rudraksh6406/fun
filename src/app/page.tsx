@@ -561,35 +561,94 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          FEATURES
+          FEATURES — Dark with animated icons
          ══════════════════════════════════════════════════ */}
-      <section className="section-light py-48 md:py-64 px-8 md:px-12">
-        <div className="max-w-[1400px] mx-auto">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="label mb-6"
-            style={{ color: "rgba(168,85,247,0.35)" }}
-          >
-            What you get
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-            className="headline text-[#0c0c0c] mb-20 max-w-2xl"
-          >
-            Three things that change how you spend your time
-          </motion.h2>
+      <section className="section-dark py-48 md:py-64 px-8 md:px-12 border-y border-purple-500/[0.06] relative overflow-hidden">
+        <div className="absolute inset-0" style={{
+          background: "radial-gradient(ellipse at 30% 30%, rgba(168,85,247,0.05) 0%, transparent 50%), radial-gradient(ellipse at 70% 70%, rgba(56,189,248,0.04) 0%, transparent 50%)",
+        }} />
 
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-10">
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-14">
             {[
-              { title: "Smart Recommendations", desc: "Tell us your mood, time, and crew size. Our AI matches you with the perfect activity — instantly.", accent: "rgba(168,85,247,0.08)" },
-              { title: "Idea Generation", desc: "Our engine invents entirely new activity concepts — wild mashups, creative twists, things that don't exist yet.", accent: "rgba(56,189,248,0.08)" },
-              { title: "Find Your People", desc: "See who's nearby and what they're planning. Join their vibe or start your own and let others find you.", accent: "rgba(251,146,60,0.08)" },
+              {
+                title: "Smart Recommendations",
+                desc: "Tell us your mood, time, and crew size. Our AI matches you with the perfect activity.",
+                color: "rgba(168,85,247,0.7)",
+                borderColor: "rgba(168,85,247,0.1)",
+                icon: (
+                  <svg viewBox="0 0 80 80" className="w-full h-full">
+                    <motion.circle cx="40" cy="40" r="28" fill="none" stroke="rgba(168,85,247,0.15)" strokeWidth="1" />
+                    <motion.circle cx="40" cy="40" r="28" fill="none" stroke="rgba(168,85,247,0.4)" strokeWidth="1" strokeDasharray="20 156"
+                      animate={{ rotate: 360 }} transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                      style={{ transformOrigin: "40px 40px" }} />
+                    <motion.circle cx="40" cy="40" r="18" fill="none" stroke="rgba(168,85,247,0.1)" strokeWidth="1" />
+                    <motion.circle cx="40" cy="40" r="6" fill="rgba(168,85,247,0.15)"
+                      animate={{ r: [6, 8, 6] }} transition={{ duration: 3, repeat: Infinity }} />
+                    <motion.circle cx="40" cy="12" r="3" fill="rgba(168,85,247,0.4)"
+                      animate={{ cx: [40, 68, 40, 12, 40], cy: [12, 40, 68, 40, 12] }}
+                      transition={{ duration: 8, repeat: Infinity, ease: "linear" }} />
+                  </svg>
+                ),
+              },
+              {
+                title: "Idea Generation",
+                desc: "Our engine invents entirely new activity concepts — wild mashups and creative twists.",
+                color: "rgba(56,189,248,0.7)",
+                borderColor: "rgba(56,189,248,0.1)",
+                icon: (
+                  <svg viewBox="0 0 80 80" className="w-full h-full">
+                    <motion.rect x="20" y="20" width="40" height="40" rx="6" fill="none" stroke="rgba(56,189,248,0.15)" strokeWidth="1"
+                      animate={{ rotate: [0, 90, 180, 270, 360] }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                      style={{ transformOrigin: "40px 40px" }} />
+                    <motion.rect x="28" y="28" width="24" height="24" rx="3" fill="none" stroke="rgba(56,189,248,0.25)" strokeWidth="1"
+                      animate={{ rotate: [0, -90, -180, -270, -360] }} transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                      style={{ transformOrigin: "40px 40px" }} />
+                    {[0, 72, 144, 216, 288].map((deg) => (
+                      <motion.circle key={deg}
+                        cx={40 + 24 * Math.cos(deg * Math.PI / 180)} cy={40 + 24 * Math.sin(deg * Math.PI / 180)}
+                        r="2" fill="rgba(56,189,248,0.3)"
+                        animate={{ opacity: [0.2, 0.7, 0.2] }}
+                        transition={{ duration: 2, repeat: Infinity, delay: deg / 360 }} />
+                    ))}
+                    <motion.circle cx="40" cy="40" r="4" fill="rgba(56,189,248,0.2)"
+                      animate={{ scale: [1, 1.5, 1] }} transition={{ duration: 2.5, repeat: Infinity }} />
+                  </svg>
+                ),
+              },
+              {
+                title: "Find Your People",
+                desc: "See who's nearby and down for the same thing. Rally your crew and make it happen.",
+                color: "rgba(251,146,60,0.7)",
+                borderColor: "rgba(251,146,60,0.1)",
+                icon: (
+                  <svg viewBox="0 0 80 80" className="w-full h-full">
+                    {[
+                      { cx: 28, cy: 30, delay: 0 },
+                      { cx: 52, cy: 30, delay: 0.3 },
+                      { cx: 40, cy: 50, delay: 0.6 },
+                    ].map((p, j) => (
+                      <g key={j}>
+                        <motion.circle cx={p.cx} cy={p.cy} r="8" fill="none" stroke="rgba(251,146,60,0.2)" strokeWidth="1"
+                          animate={{ r: [8, 10, 8] }}
+                          transition={{ duration: 3, repeat: Infinity, delay: p.delay }} />
+                        <motion.circle cx={p.cx} cy={p.cy} r="3" fill="rgba(251,146,60,0.3)"
+                          animate={{ opacity: [0.3, 0.6, 0.3] }}
+                          transition={{ duration: 2, repeat: Infinity, delay: p.delay }} />
+                      </g>
+                    ))}
+                    <motion.line x1="28" y1="30" x2="52" y2="30" stroke="rgba(251,146,60,0.1)" strokeWidth="0.8"
+                      animate={{ opacity: [0.1, 0.3, 0.1] }} transition={{ duration: 2, repeat: Infinity }} />
+                    <motion.line x1="28" y1="30" x2="40" y2="50" stroke="rgba(251,146,60,0.1)" strokeWidth="0.8"
+                      animate={{ opacity: [0.1, 0.3, 0.1] }} transition={{ duration: 2, repeat: Infinity, delay: 0.3 }} />
+                    <motion.line x1="52" y1="30" x2="40" y2="50" stroke="rgba(251,146,60,0.1)" strokeWidth="0.8"
+                      animate={{ opacity: [0.1, 0.3, 0.1] }} transition={{ duration: 2, repeat: Infinity, delay: 0.6 }} />
+                    <motion.circle cx="40" cy="37" r="16" fill="none" stroke="rgba(251,146,60,0.06)" strokeWidth="1" strokeDasharray="3 5"
+                      animate={{ rotate: -360 }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                      style={{ transformOrigin: "40px 37px" }} />
+                  </svg>
+                ),
+              },
             ].map((feature, i) => (
               <motion.div
                 key={feature.title}
@@ -597,11 +656,30 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ delay: i * 0.15, duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-                className="border border-black/[0.06] p-8 lg:p-10 group hover:border-black/15 transition-colors duration-700"
+                className="relative p-8 lg:p-10 group transition-all duration-700 hover:border-opacity-30"
+                style={{ border: `1px solid ${feature.borderColor}` }}
               >
-                <span className="text-[3rem] font-extralight leading-none block mb-6" style={{ color: feature.accent }}>0{i + 1}</span>
-                <h3 className="title text-[#0c0c0c] mb-4 text-[clamp(1.3rem,2.5vw,2rem)]">{feature.title}</h3>
-                <p className="body-sm text-black/40">{feature.desc}</p>
+                {/* Background glow */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                  style={{ background: `radial-gradient(circle at center, ${feature.color.replace("0.7)", "0.04)")}, transparent 70%)` }} />
+
+                {/* Corner accents */}
+                <span className="absolute top-0 left-0 w-5 h-[1px] transition-all duration-500 group-hover:w-8" style={{ background: feature.color.replace("0.7)", "0.3)") }} />
+                <span className="absolute top-0 left-0 w-[1px] h-5 transition-all duration-500 group-hover:h-8" style={{ background: feature.color.replace("0.7)", "0.3)") }} />
+                <span className="absolute bottom-0 right-0 w-5 h-[1px] transition-all duration-500 group-hover:w-8" style={{ background: feature.color.replace("0.7)", "0.3)") }} />
+                <span className="absolute bottom-0 right-0 w-[1px] h-5 transition-all duration-500 group-hover:h-8" style={{ background: feature.color.replace("0.7)", "0.3)") }} />
+
+                {/* Icon */}
+                <div className="w-20 h-20 mb-8 relative z-10">
+                  {feature.icon}
+                </div>
+
+                <h3 className="text-[clamp(1.2rem,2vw,1.5rem)] font-light tracking-tight mb-4 relative z-10" style={{ color: "rgba(200,180,255,0.8)" }}>
+                  {feature.title}
+                </h3>
+                <p className="text-[13px] leading-relaxed relative z-10" style={{ color: "rgba(168,85,247,0.3)" }}>
+                  {feature.desc}
+                </p>
               </motion.div>
             ))}
           </div>
