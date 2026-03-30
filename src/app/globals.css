@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark: #0c0c0c;
+  --color-light: #f5f2ed;
+  --color-light-2: #ebe7e0;
+  --color-mid: #1a1a1a;
+  --color-text-dark: #0c0c0c;
+  --color-text-light: #d4c4f0;
+  --color-text-muted: rgba(168,85,247,0.4);
+  --color-text-muted-dark: #555;
+  --color-border-light: rgba(168,85,247,0.1);
+  --color-border-dark: rgba(168,85,247,0.1);
+  --color-accent: rgba(168,85,247,1);
+  --color-accent-light: rgba(168,85,247,0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-dark);
+  color: var(--color-text-light);
+  font-family: 'Helvetica Neue', 'Arial', -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: none !important;
+}
+
+a, button, input, [role="button"], [onclick] {
+  cursor: none !important;
+}
+
+::selection {
+  background: rgba(168,85,247,0.3);
+  color: #e8dcfa;
+}
+
+::-webkit-scrollbar { width: 0; }
+
+/* === TYPOGRAPHY === */
+.display {
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.headline {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.title {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.body {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.body-sm {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* === SECTIONS === */
+.section-dark {
+  background: var(--color-dark);
+  color: var(--color-text-light);
+}
+
+.section-light {
+  background: var(--color-light);
+  color: var(--color-text-dark);
+}
+
+/* === IMAGES === */
+.img-cover {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* === BUTTONS === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid rgba(168,85,247,0.3);
+  padding: 14px 32px;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
+  color: rgba(168,85,247,0.7);
+}
+
+.btn:hover {
+  background: rgba(168,85,247,0.12);
+  color: rgba(168,85,247,0.95);
+  border-color: rgba(168,85,247,0.6);
+}
+
+.btn-light {
+  border-color: rgba(168,85,247,0.25);
+  color: rgba(168,85,247,0.7);
+}
+
+.btn-light:hover {
+  background: rgba(168,85,247,0.08);
+  color: rgba(168,85,247,0.95);
+  border-color: rgba(168,85,247,0.5);
+}
+
+/* === CHIP === */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 1px solid rgba(168,85,247,0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: rgba(168,85,247,0.4);
+}
+.chip:hover, .chip.active {
+  border-color: rgba(168,85,247,0.5);
+  color: rgba(168,85,247,0.95);
+  background: rgba(168,85,247,0.06);
+}
+
+.chip-dark {
+  border-color: rgba(168,85,247,0.12);
+  color: rgba(168,85,247,0.4);
+}
+.chip-dark:hover, .chip-dark.active {
+  border-color: rgba(168,85,247,0.4);
+  color: rgba(168,85,247,0.9);
+  background: rgba(168,85,247,0.05);
+}
+
+/* === DIVIDER === */
+.divider { height: 1px; background: rgba(168,85,247,0.08); }
+.divider-light { height: 1px; background: rgba(168,85,247,0.08); }
+
+/* === MAP === */
+.leaflet-container { background: #0c0c0c !important; }
+
+/* === SCORE BAR === */
+.score-bar {
+  height: 2px;
+  background: rgba(168,85,247,0.5);
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* === HORIZONTAL SCROLL === */
+.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.scroll-x::-webkit-scrollbar { display: none; }
+
+/* === INPUT === */
+.input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(168,85,247,0.15);
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 300;
+  color: inherit;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+.input::placeholder { color: rgba(168,85,247,0.25); }
+.input:focus { border-color: rgba(168,85,247,0.5); }
+
+.input-dark {
+  border-color: rgba(168,85,247,0.12);
+  color: var(--color-text-dark);
+}
+.input-dark::placeholder { color: rgba(168,85,247,0.2); }
+.input-dark:focus { border-color: rgba(168,85,247,0.4); }
