@@ -32,7 +32,7 @@ export default function DrivingScene() {
     }
 
     const stars: { x: number; y: number; speed: number; brightness: number; hue: number }[] = [];
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 40; i++) {
       stars.push({
         x: Math.random(),
         y: Math.random() * 0.5,
@@ -44,7 +44,7 @@ export default function DrivingScene() {
 
     interface Tree { z: number; side: number; }
     const trees: Tree[] = [];
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 15; i++) {
       trees.push({ z: i * 35, side: Math.random() > 0.5 ? 1 : -1 });
     }
 

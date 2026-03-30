@@ -57,7 +57,7 @@ export default function WaveField({ color = "white" }: { color?: "white" | "dark
 
         ctx.beginPath();
         ctx.moveTo(0, ch);
-        for (let x = 0; x <= cw; x += 3) {
+        for (let x = 0; x <= cw; x += 5) {
           const y = baseY +
             Math.sin(x * freq + time * speed) * amp +
             Math.sin(x * freq * 2.3 + time * speed * 0.7) * (amp * 0.4) +

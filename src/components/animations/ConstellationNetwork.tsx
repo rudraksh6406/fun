@@ -36,7 +36,7 @@ export default function ConstellationNetwork() {
     }
 
     const nodes: Node[] = [];
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 25; i++) {
       nodes.push({
         x: Math.random() * w(),
         y: Math.random() * h(),
@@ -62,7 +62,7 @@ export default function ConstellationNetwork() {
       const ch = h();
       ctx.clearRect(0, 0, cw, ch);
 
-      const connectDist = 150;
+      const connectDist = 100;
 
       nodes.forEach((node) => {
         node.pulse += node.pulseSpeed;
@@ -78,7 +78,7 @@ export default function ConstellationNetwork() {
           const dx = mouseRef.current.x - node.x;
           const dy = mouseRef.current.y - node.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 200) {
+          if (dist < 120) {
             node.vx += (dx / dist) * 0.02;
             node.vy += (dy / dist) * 0.02;
           }
@@ -113,8 +113,8 @@ export default function ConstellationNetwork() {
           const dx = mouseRef.current.x - node.x;
           const dy = mouseRef.current.y - node.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 180) {
-            const alpha = (1 - dist / 180) * 0.25;
+          if (dist < 120) {
+            const alpha = (1 - dist / 120) * 0.25;
             ctx.strokeStyle = `rgba(244, 114, 182, ${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();

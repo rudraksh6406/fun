@@ -26,7 +26,7 @@ export default function ParticleIntro() {
     const ch = () => canvas.offsetHeight;
 
     // Floating particles
-    const particleCount = 120;
+    const particleCount = 60;
     const particles: {
       x: number; y: number; vx: number; vy: number;
       size: number; hue: number; alpha: number; pulse: number; speed: number;
@@ -106,8 +106,8 @@ export default function ParticleIntro() {
           const dx = p.x - q.x;
           const dy = p.y - q.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 100) {
-            const alpha = (1 - dist / 100) * 0.08;
+          if (dist < 80) {
+            const alpha = (1 - dist / 80) * 0.08;
             const avgHue = (p.hue + q.hue) / 2;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
